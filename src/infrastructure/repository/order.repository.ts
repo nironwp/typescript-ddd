@@ -99,7 +99,6 @@ export default class OrderRepository implements OrderRepositoryInterface {
         const OrderModels = await OrderModel.findAll(opts)
 
         return OrderModels.map((order_model) => {
-            console.log(order_model)
             const order_items = order_model.items.map((item) => new OrderItem(item.id, item.name, item.price, item.quantity, item.product_id))
 
             return new Order(order_model.id, order_model.customer_id, order_items)
